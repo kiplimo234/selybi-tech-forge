@@ -1,13 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Selybi Design System - Professional & Innovative */
 
 @layer base {
   :root {
+    /* Selybi Brand Colors (HSL format) */
+    --selybi-primary: 207 100% 20%;        /* #003366 - Deep ocean blue */
+    --selybi-secondary: 195 100% 40%;      /* #00A4CC - Bright tech blue */
+    --selybi-accent: 38 96% 62%;           /* #FBB040 - Amber orange */
+    --selybi-base: 210 33% 97%;            /* #F4F7FA - Light clean slate */
+    --selybi-neutral: 0 0% 17%;            /* #2C2C2C - Dark text */
+    
+    /* Gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(var(--selybi-primary)), hsl(var(--selybi-secondary)));
+    --gradient-innovation: linear-gradient(45deg, hsl(var(--selybi-secondary)), hsl(var(--selybi-accent)));
+    --gradient-glow: linear-gradient(135deg, hsl(var(--selybi-accent) / 0.1), hsl(var(--selybi-primary) / 0.05));
+    
+    /* Glassmorphism */
+    --glass-bg: hsl(var(--selybi-base) / 0.8);
+    --glass-border: hsl(var(--selybi-secondary) / 0.2);
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsl(var(--selybi-primary) / 0.1);
+    --shadow-glow: 0 0 30px hsl(var(--selybi-accent) / 0.3);
+    --shadow-float: 0 8px 32px hsl(var(--selybi-primary) / 0.15);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -100,6 +125,121 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-base-100 text-neutral font-body;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Components */
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20 rounded-xl shadow-lg;
+  }
+  
+  .glass-nav {
+    @apply bg-white/90 backdrop-blur-md border-b border-white/20;
+  }
+  
+  /* Interactive Buttons */
+  .btn-glow {
+    @apply relative overflow-hidden transition-all duration-300;
+  }
+  
+  .btn-glow::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full transition-transform duration-700;
+  }
+  
+  .btn-glow:hover::before {
+    @apply translate-x-full;
+  }
+  
+  /* Floating Animation */
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+  }
+  
+  /* Card Hover Effects */
+  .card-hover {
+    @apply transform transition-all duration-300 hover:scale-105 hover:shadow-xl;
+  }
+  
+  /* Text Gradients */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  /* Custom Font Families */
+  .font-heading {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  .font-body {
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  /* Animation Utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes glow {
+    from { box-shadow: 0 0 20px hsl(var(--selybi-accent) / 0.3); }
+    to { box-shadow: 0 0 30px hsl(var(--selybi-accent) / 0.6); }
+  }
+}
+
+/* DaisyUI Theme Customizations */
+[data-theme="selybi"] {
+  color-scheme: light;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-base-200;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/60 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary;
 }
