@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Settings, Globe, Menu, X } from 'lucide-react';
 import FontModal from './FontModal';
+import { useLanguage, Language } from '@/contexts/LanguageContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showFontModal, setShowFontModal] = useState(false);
-  const [language, setLanguage] = useState('EN');
+  const { language, setLanguage, t } = useLanguage();
   const location = useLocation();
 
   useEffect(() => {
@@ -20,13 +21,13 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Services', path: '/services' },
-    { name: 'Showcase', path: '/showcase' },
-    { name: 'AI Lab', path: '/ai-lab' },
-    { name: 'Journal', path: '/journal' },
-    { name: 'Contact', path: '/contact' },
+    { name: t('nav.home'), path: '/' },
+    { name: t('nav.about'), path: '/about' },
+    { name: t('nav.services'), path: '/services' },
+    { name: t('nav.showcase'), path: '/showcase' },
+    { name: t('nav.ailab'), path: '/ai-lab' },
+    { name: t('nav.journal'), path: '/journal' },
+    { name: t('nav.contact'), path: '/contact' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -86,9 +87,9 @@ const Navbar = () => {
                   <span>{language}</span>
                 </div>
                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-24">
-                  <li><a onClick={() => setLanguage('EN')}>EN</a></li>
-                  <li><a onClick={() => setLanguage('ES')}>ES</a></li>
-                  <li><a onClick={() => setLanguage('FR')}>FR</a></li>
+                  <li><a onClick={() => setLanguage('EN' as Language)}>EN</a></li>
+                  <li><a onClick={() => setLanguage('ES' as Language)}>ES</a></li>
+                  <li><a onClick={() => setLanguage('FR' as Language)}>FR</a></li>
                 </ul>
               </div>
 

@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code, Cloud, Brain, Sparkles, Globe, Zap } from 'lucide-react';
+import { ArrowRight, Code, Cloud, Brain, Sparkles, Globe, Zap, Star, Users, Trophy, Award } from 'lucide-react';
 import heroImage from '@/assets/hero-bg.jpg';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Home = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="relative overflow-hidden">
       {/* Hero Section */}
@@ -25,15 +28,14 @@ const Home = () => {
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="max-w-4xl mx-auto animate-fade-in">
             <h1 className="text-5xl md:text-7xl font-heading font-black text-white mb-6 leading-tight">
-              Building Tomorrow.{' '}
+              {t('hero.title')}{' '}
               <span className="text-gradient bg-gradient-to-r from-accent to-white bg-clip-text text-transparent">
-                Today.
+                {t('hero.titleAccent')}
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl text-white/90 mb-8 font-light leading-relaxed">
-              Selybi transforms ideas into powerful digital solutions. 
-              We craft cutting-edge software that shapes the future of technology.
+              {t('hero.subtitle')}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -41,7 +43,7 @@ const Home = () => {
                 to="/services" 
                 className="btn btn-primary btn-lg btn-glow group px-8 py-4 text-lg font-semibold"
               >
-                Explore Our Services
+                {t('hero.exploreServices')}
                 <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Link>
               
@@ -49,7 +51,7 @@ const Home = () => {
                 to="/showcase" 
                 className="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-primary px-8 py-4 text-lg font-semibold"
               >
-                View Our Work
+                {t('hero.viewWork')}
               </Link>
             </div>
 
@@ -57,19 +59,19 @@ const Home = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto">
               <div className="text-center">
                 <div className="text-3xl font-bold text-white mb-1">150+</div>
-                <div className="text-white/80 text-sm">Projects Delivered</div>
+                <div className="text-white/80 text-sm">{t('hero.projectsDelivered')}</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-white mb-1">50+</div>
-                <div className="text-white/80 text-sm">Happy Clients</div>
+                <div className="text-white/80 text-sm">{t('hero.happyClients')}</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-white mb-1">5</div>
-                <div className="text-white/80 text-sm">Years Experience</div>
+                <div className="text-white/80 text-sm">{t('hero.yearsExperience')}</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-white mb-1">24/7</div>
-                <div className="text-white/80 text-sm">Support</div>
+                <div className="text-white/80 text-sm">{t('hero.support')}</div>
               </div>
             </div>
           </div>
@@ -88,10 +90,10 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-slide-up">
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-neutral mb-4">
-              What We Create
+              {t('services.whatWeCreate')}
             </h2>
             <p className="text-xl text-neutral/70 max-w-2xl mx-auto">
-              From concept to deployment, we deliver innovative solutions that drive business growth.
+              {t('services.subtitle')}
             </p>
           </div>
 
@@ -100,12 +102,12 @@ const Home = () => {
               <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <Code className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-heading font-bold text-neutral mb-4">Software Development</h3>
+              <h3 className="text-xl font-heading font-bold text-neutral mb-4">{t('services.softwareDev')}</h3>
               <p className="text-neutral/70 mb-6">
-                Custom applications built with modern technologies and best practices.
+                {t('services.softwareDesc')}
               </p>
               <Link to="/services" className="text-primary font-semibold hover:text-secondary transition-colors">
-                Learn More →
+                {t('services.learnMore')}
               </Link>
             </div>
 
@@ -113,12 +115,12 @@ const Home = () => {
               <div className="w-16 h-16 bg-gradient-to-br from-secondary to-accent rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <Cloud className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-heading font-bold text-neutral mb-4">Cloud Solutions</h3>
+              <h3 className="text-xl font-heading font-bold text-neutral mb-4">{t('services.cloudSolutions')}</h3>
               <p className="text-neutral/70 mb-6">
-                Scalable cloud infrastructure and deployment strategies for modern applications.
+                {t('services.cloudDesc')}
               </p>
               <Link to="/services" className="text-primary font-semibold hover:text-secondary transition-colors">
-                Learn More →
+                {t('services.learnMore')}
               </Link>
             </div>
 
@@ -126,12 +128,12 @@ const Home = () => {
               <div className="w-16 h-16 bg-gradient-to-br from-accent to-primary rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <Brain className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-heading font-bold text-neutral mb-4">AI Integration</h3>
+              <h3 className="text-xl font-heading font-bold text-neutral mb-4">{t('services.aiIntegration')}</h3>
               <p className="text-neutral/70 mb-6">
-                Intelligent automation and AI-powered features to enhance user experiences.
+                {t('services.aiDesc')}
               </p>
               <Link to="/ai-lab" className="text-primary font-semibold hover:text-secondary transition-colors">
-                Learn More →
+                {t('services.learnMore')}
               </Link>
             </div>
           </div>
@@ -143,10 +145,10 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-neutral mb-4">
-              Why Choose Selybi
+              {t('why.title')}
             </h2>
             <p className="text-xl text-neutral/70">
-              We combine technical excellence with creative innovation to deliver exceptional results.
+              {t('why.subtitle')}
             </p>
           </div>
 
@@ -155,9 +157,9 @@ const Home = () => {
               <div className="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <Sparkles className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-xl font-heading font-bold text-neutral mb-4">Innovation First</h3>
+              <h3 className="text-xl font-heading font-bold text-neutral mb-4">{t('why.innovation')}</h3>
               <p className="text-neutral/70">
-                We stay ahead of technology trends to deliver cutting-edge solutions.
+                {t('why.innovationDesc')}
               </p>
             </div>
 
@@ -165,9 +167,9 @@ const Home = () => {
               <div className="w-20 h-20 bg-gradient-to-br from-secondary to-accent rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <Globe className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-xl font-heading font-bold text-neutral mb-4">Global Reach</h3>
+              <h3 className="text-xl font-heading font-bold text-neutral mb-4">{t('why.global')}</h3>
               <p className="text-neutral/70">
-                Serving clients worldwide with 24/7 support and remote collaboration.
+                {t('why.globalDesc')}
               </p>
             </div>
 
@@ -175,10 +177,86 @@ const Home = () => {
               <div className="w-20 h-20 bg-gradient-to-br from-accent to-primary rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <Zap className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-xl font-heading font-bold text-neutral mb-4">Fast Delivery</h3>
+              <h3 className="text-xl font-heading font-bold text-neutral mb-4">{t('why.fast')}</h3>
               <p className="text-neutral/70">
-                Agile development process ensuring rapid deployment and iteration.
+                {t('why.fastDesc')}
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-base-100">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-neutral mb-4">
+              Client Success Stories
+            </h2>
+            <p className="text-xl text-neutral/70 max-w-2xl mx-auto">
+              See what our clients say about working with Selybi
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="glass-card p-8 text-center">
+              <div className="flex justify-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 text-accent fill-current" />
+                ))}
+              </div>
+              <p className="text-neutral/70 mb-6 italic">
+                "Selybi transformed our digital presence completely. Their team delivered beyond our expectations with incredible attention to detail."
+              </p>
+              <div className="flex items-center justify-center space-x-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <div className="font-semibold text-neutral">Sarah Johnson</div>
+                  <div className="text-sm text-neutral/60">CEO, TechStart Inc.</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="glass-card p-8 text-center">
+              <div className="flex justify-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 text-accent fill-current" />
+                ))}
+              </div>
+              <p className="text-neutral/70 mb-6 italic">
+                "The AI integration they built for us increased our efficiency by 300%. Absolutely remarkable work and ongoing support."
+              </p>
+              <div className="flex items-center justify-center space-x-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-secondary to-accent rounded-full flex items-center justify-center">
+                  <Trophy className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <div className="font-semibold text-neutral">Michael Chen</div>
+                  <div className="text-sm text-neutral/60">CTO, DataFlow Solutions</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="glass-card p-8 text-center">
+              <div className="flex justify-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 text-accent fill-current" />
+                ))}
+              </div>
+              <p className="text-neutral/70 mb-6 italic">
+                "Professional, innovative, and reliable. Selybi helped us scale our platform to serve millions of users seamlessly."
+              </p>
+              <div className="flex items-center justify-center space-x-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-full flex items-center justify-center">
+                  <Award className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <div className="font-semibold text-neutral">Emma Rodriguez</div>
+                  <div className="text-sm text-neutral/60">Founder, ScaleUp Labs</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -189,16 +267,16 @@ const Home = () => {
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">
-              Ready to Build Something Amazing?
+              {t('cta.title')}
             </h2>
             <p className="text-xl text-white/90 mb-8">
-              Let's discuss your project and turn your vision into reality.
+              {t('cta.subtitle')}
             </p>
             <Link 
               to="/contact" 
               className="btn btn-accent btn-lg btn-glow px-8 py-4 text-lg font-semibold"
             >
-              Start Your Project
+              {t('cta.startProject')}
               <ArrowRight className="ml-2 w-5 h-5" />
             </Link>
           </div>
