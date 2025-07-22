@@ -1,7 +1,10 @@
 import { Users, Target, Eye, Heart, Award, Lightbulb } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import teamImage from '@/assets/about-team.jpg';
+import heroBg from '@/assets/about-hero-bg.jpg';
 
 const About = () => {
+  const { t } = useTranslation();
   const timeline = [
     {
       year: '2019',
@@ -61,18 +64,19 @@ const About = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/10 to-secondary/5">
+      <section 
+        className="relative py-32 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 164, 204, 0.6)), url(${heroBg})`
+        }}
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <h1 className="text-5xl md:text-6xl font-heading font-black text-neutral mb-6">
-              The Soul of{' '}
-              <span className="text-gradient bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Selybi
-              </span>
+            <h1 className="text-5xl md:text-6xl font-heading font-black text-white mb-6">
+              {t('about.title')}
             </h1>
-            <p className="text-xl text-neutral/70 leading-relaxed">
-              We're more than a software company. We're architects of digital transformation, 
-              craftspeople of code, and partners in your success story.
+            <p className="text-xl text-white/90 leading-relaxed">
+              {t('about.subtitle')}
             </p>
           </div>
         </div>
@@ -94,7 +98,7 @@ const About = () => {
               <div className="glass-card p-8">
                 <div className="flex items-center mb-4">
                   <Target className="w-8 h-8 text-primary mr-3" />
-                  <h3 className="text-2xl font-heading font-bold text-neutral">Our Mission</h3>
+                  <h3 className="text-2xl font-heading font-bold text-neutral">{t('about.mission')}</h3>
                 </div>
                 <p className="text-neutral/70 leading-relaxed">
                   To empower businesses through innovative software solutions that drive growth, 
@@ -106,7 +110,7 @@ const About = () => {
               <div className="glass-card p-8">
                 <div className="flex items-center mb-4">
                   <Eye className="w-8 h-8 text-secondary mr-3" />
-                  <h3 className="text-2xl font-heading font-bold text-neutral">Our Vision</h3>
+                  <h3 className="text-2xl font-heading font-bold text-neutral">{t('about.vision')}</h3>
                 </div>
                 <p className="text-neutral/70 leading-relaxed">
                   To be the leading force in shaping the future of software development, 
@@ -124,7 +128,7 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-neutral mb-4">
-              Our Journey
+              {t('about.story')}
             </h2>
             <p className="text-xl text-neutral/70 max-w-2xl mx-auto">
               From a small startup to a global software development powerhouse.
@@ -162,7 +166,7 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-neutral mb-4">
-              Our Core Values
+              {t('about.values')}
             </h2>
             <p className="text-xl text-neutral/70 max-w-2xl mx-auto">
               The principles that guide every decision and drive our commitment to excellence.
@@ -213,19 +217,19 @@ const About = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto text-center">
             <div className="group">
               <div className="text-5xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">150+</div>
-              <div className="text-neutral/70">Projects Completed</div>
+              <div className="text-neutral/70">{t('about.stats.projects')}</div>
             </div>
             <div className="group">
               <div className="text-5xl font-bold text-secondary mb-2 group-hover:scale-110 transition-transform">50+</div>
-              <div className="text-neutral/70">Happy Clients</div>
+              <div className="text-neutral/70">{t('about.stats.clients')}</div>
             </div>
             <div className="group">
               <div className="text-5xl font-bold text-accent mb-2 group-hover:scale-110 transition-transform">25+</div>
-              <div className="text-neutral/70">Countries Served</div>
+              <div className="text-neutral/70">{t('about.stats.countries')}</div>
             </div>
             <div className="group">
               <div className="text-5xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">5</div>
-              <div className="text-neutral/70">Years Experience</div>
+              <div className="text-neutral/70">{t('about.stats.experience')}</div>
             </div>
           </div>
         </div>

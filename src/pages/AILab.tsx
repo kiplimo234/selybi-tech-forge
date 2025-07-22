@@ -1,20 +1,25 @@
 import { Brain } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import heroBg from '@/assets/ailab-hero-bg.jpg';
 
 const AILab = () => {
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/10 to-secondary/5">
+      <section 
+        className="relative py-32 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 164, 204, 0.6)), url(${heroBg})`
+        }}
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <h1 className="text-5xl md:text-6xl font-heading font-black text-neutral mb-6">
-              AI Lab{' '}
-              <span className="text-gradient bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Innovation
-              </span>
+            <h1 className="text-5xl md:text-6xl font-heading font-black text-white mb-6">
+              {t('ailab.title')}
             </h1>
-            <p className="text-xl text-neutral/70 leading-relaxed">
-              Exploring the frontiers of artificial intelligence and machine learning to create tomorrow's solutions today.
+            <p className="text-xl text-white/90 leading-relaxed">
+              {t('ailab.subtitle')}
             </p>
           </div>
         </div>
@@ -28,11 +33,10 @@ const AILab = () => {
               <Brain className="w-12 h-12 text-white" />
             </div>
             <h2 className="text-3xl font-heading font-bold text-neutral mb-6">
-              Innovation in Motion
+              {t('ailab.comingSoon')}
             </h2>
             <p className="text-lg text-neutral/70 mb-8 leading-relaxed">
-              Our AI Lab is currently under development. We're working on exciting new tools and experiments 
-              that will showcase the power of artificial intelligence in real-world applications.
+              {t('ailab.description')}
             </p>
             <div className="glass-card p-8">
               <h3 className="text-xl font-semibold text-neutral mb-4">Coming Soon:</h3>

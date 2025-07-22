@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { Send, Mail, Phone, MapPin, MessageCircle, CheckCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import heroBg from '@/assets/contact-hero-bg.jpg';
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -120,10 +123,10 @@ const Contact = () => {
             <CheckCircle className="w-12 h-12 text-white" />
           </div>
           <h1 className="text-4xl font-heading font-bold text-neutral mb-6">
-            Thank You!
+            {t('contact.thankYou')}
           </h1>
           <p className="text-xl text-neutral/70 mb-8">
-            We've received your project details and our team will get back to you within 24 hours.
+            {t('contact.thankYouMessage')}
           </p>
           <button 
             onClick={() => {
@@ -155,17 +158,19 @@ const Contact = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/10 to-secondary/5">
+      <section 
+        className="relative py-32 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 164, 204, 0.6)), url(${heroBg})`
+        }}
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <h1 className="text-5xl md:text-6xl font-heading font-black text-neutral mb-6">
-              Let's Build Something{' '}
-              <span className="text-gradient bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Extraordinary
-              </span>
+            <h1 className="text-5xl md:text-6xl font-heading font-black text-white mb-6">
+              {t('contact.title')}
             </h1>
-            <p className="text-xl text-neutral/70 leading-relaxed">
-              Tell us about your project and we'll turn your vision into reality.
+            <p className="text-xl text-white/90 leading-relaxed">
+              {t('contact.subtitle')}
             </p>
           </div>
         </div>
@@ -264,10 +269,10 @@ const Contact = () => {
             <div className="space-y-8">
               <div>
                 <h2 className="text-3xl font-heading font-bold text-neutral mb-6">
-                  Get in Touch
+                  {t('contact.getInTouch')}
                 </h2>
                 <p className="text-lg text-neutral/70 leading-relaxed mb-8">
-                  Ready to start your project? Our team is here to help you every step of the way.
+                  {t('contact.description')}
                 </p>
               </div>
 

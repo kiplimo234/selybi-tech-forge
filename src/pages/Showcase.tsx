@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { ExternalLink, Heart, Star, Filter, Code, Globe, Smartphone } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import heroBg from '@/assets/showcase-hero-bg.jpg';
 
 const Showcase = () => {
+  const { t } = useTranslation();
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [favorites, setFavorites] = useState<number[]>([]);
 
@@ -75,10 +78,10 @@ const Showcase = () => {
   ];
 
   const filters = [
-    { key: 'all', label: 'All Projects', icon: Globe },
-    { key: 'web', label: 'Web Apps', icon: Globe },
-    { key: 'mobile', label: 'Mobile Apps', icon: Smartphone },
-    { key: 'ai', label: 'AI Solutions', icon: Star },
+    { key: 'all', label: t('showcase.filter.all'), icon: Globe },
+    { key: 'web', label: t('showcase.filter.web'), icon: Globe },
+    { key: 'mobile', label: t('showcase.filter.mobile'), icon: Smartphone },
+    { key: 'ai', label: t('showcase.filter.ai'), icon: Star },
     { key: 'iot', label: 'IoT Systems', icon: Code }
   ];
 
@@ -97,36 +100,38 @@ const Showcase = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/10 to-secondary/5">
+      <section 
+        className="relative py-32 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 164, 204, 0.6)), url(${heroBg})`
+        }}
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <h1 className="text-5xl md:text-6xl font-heading font-black text-neutral mb-6">
-              Experience the{' '}
-              <span className="text-gradient bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Selybi Impact
-              </span>
+            <h1 className="text-5xl md:text-6xl font-heading font-black text-white mb-6">
+              {t('showcase.title')}
             </h1>
-            <p className="text-xl text-neutral/70 leading-relaxed mb-8">
-              Discover our portfolio of innovative solutions that have transformed businesses across industries.
+            <p className="text-xl text-white/90 leading-relaxed mb-8">
+              {t('showcase.subtitle')}
             </p>
             
             {/* Quick Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto">
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-1">150+</div>
-                <div className="text-neutral/70 text-sm">Projects</div>
+                <div className="text-3xl font-bold text-white mb-1">150+</div>
+                <div className="text-white/80 text-sm">Projects</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-secondary mb-1">25+</div>
-                <div className="text-neutral/70 text-sm">Industries</div>
+                <div className="text-3xl font-bold text-white mb-1">25+</div>
+                <div className="text-white/80 text-sm">Industries</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-accent mb-1">98%</div>
-                <div className="text-neutral/70 text-sm">Success Rate</div>
+                <div className="text-3xl font-bold text-white mb-1">98%</div>
+                <div className="text-white/80 text-sm">Success Rate</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-1">50+</div>
-                <div className="text-neutral/70 text-sm">Happy Clients</div>
+                <div className="text-3xl font-bold text-white mb-1">50+</div>
+                <div className="text-white/80 text-sm">Happy Clients</div>
               </div>
             </div>
           </div>
@@ -264,7 +269,7 @@ const Showcase = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-neutral mb-4">
-              What Our Clients Say
+              {t('showcase.testimonials')}
             </h2>
             <p className="text-xl text-neutral/70 max-w-2xl mx-auto">
               Don't just take our word for it. Here's what our clients have to say about working with Selybi.
@@ -316,7 +321,7 @@ const Showcase = () => {
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">
-              Ready to Join Our Success Stories?
+              {t('showcase.cta')}
             </h2>
             <p className="text-xl text-white/90 mb-8">
               Let's create something amazing together. Your project could be our next showcase piece.

@@ -2,6 +2,7 @@ import { BookOpen, Calendar, Clock, User, ArrowRight, Search, Filter, Tag } from
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import heroBg from '@/assets/journal-hero-bg.jpg';
 
 const Journal = () => {
   const { t } = useTranslation();
@@ -95,16 +96,18 @@ const Journal = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/10 to-secondary/5">
+      <section 
+        className="relative py-32 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 164, 204, 0.6)), url(${heroBg})`
+        }}
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <h1 className="text-5xl md:text-6xl font-heading font-black text-neutral mb-6">
-              {t('journal.title')}{' '}
-              <span className="text-gradient bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                {t('journal.titleAccent')}
-              </span>
+            <h1 className="text-5xl md:text-6xl font-heading font-black text-white mb-6">
+              {t('journal.title')}
             </h1>
-            <p className="text-xl text-neutral/70 leading-relaxed">
+            <p className="text-xl text-white/90 leading-relaxed">
               {t('journal.subtitle')}
             </p>
           </div>
