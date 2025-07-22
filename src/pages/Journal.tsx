@@ -1,10 +1,10 @@
 import { BookOpen, Calendar, Clock, User, ArrowRight, Search, Filter, Tag } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useTranslation } from 'react-i18next';
 
 const Journal = () => {
-  const { t } = useLanguage();
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
 

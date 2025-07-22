@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Code, Cloud, Brain, Sparkles, Globe, Zap, Star, Users, Trophy, Award } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import heroImage from '@/assets/hero-bg.jpg';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 const Home = () => {
-  const { t } = useLanguage();
+  const { t } = useTranslation();
   
   return (
     <div className="relative overflow-hidden">

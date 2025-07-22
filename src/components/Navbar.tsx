@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Settings, Globe, Menu, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import FontModal from './FontModal';
-import { useLanguage, Language } from '@/contexts/LanguageContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showFontModal, setShowFontModal] = useState(false);
-  const { language, setLanguage, t } = useLanguage();
+  const { t, i18n } = useTranslation();
   const location = useLocation();
 
   useEffect(() => {
@@ -34,9 +34,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-nav' : 'bg-transparent'
-      }`}>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-base-100/95 backdrop-blur-sm border-b border-base-200 transition-all duration-300">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -84,12 +82,12 @@ const Navbar = () => {
               <div className="dropdown dropdown-end">
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-sm flex items-center space-x-1">
                   <Globe className="w-4 h-4" />
-                  <span>{language}</span>
+                  <span>{i18n.language.toUpperCase()}</span>
                 </div>
                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-24">
-                  <li><a onClick={() => setLanguage('EN' as Language)}>EN</a></li>
-                  <li><a onClick={() => setLanguage('ES' as Language)}>ES</a></li>
-                  <li><a onClick={() => setLanguage('FR' as Language)}>FR</a></li>
+                  <li><a onClick={() => i18n.changeLanguage('en')}>EN</a></li>
+                  <li><a onClick={() => i18n.changeLanguage('es')}>ES</a></li>
+                  <li><a onClick={() => i18n.changeLanguage('fr')}>FR</a></li>
                 </ul>
               </div>
 

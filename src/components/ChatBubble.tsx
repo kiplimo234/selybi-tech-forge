@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MessageCircle, X, Send, Bot } from 'lucide-react';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useTranslation } from 'react-i18next';
 
 const ChatBubble = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +13,7 @@ const ChatBubble = () => {
       timestamp: new Date()
     }
   ]);
-  const { t } = useLanguage();
+  const { t } = useTranslation();
 
   const handleSendMessage = () => {
     if (!message.trim()) return;
@@ -71,7 +71,7 @@ const ChatBubble = () => {
                 </div>
                 <div>
                   <h3 className="text-white font-semibold text-sm">{t('chat.title')}</h3>
-                  <p className="text-white/80 text-xs">{t('chat.subtitle')}</p>
+                  <p className="text-white/80 text-xs">Online</p>
                 </div>
               </div>
               <button

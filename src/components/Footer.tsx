@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Github, Twitter, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
-  const { t } = useLanguage();
+  const { t } = useTranslation();
 
   return (
     <footer className="bg-neutral text-white">
